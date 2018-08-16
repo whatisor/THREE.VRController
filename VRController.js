@@ -1,4 +1,4 @@
-﻿/**
+/**
  * @author Stewart Smith / http://stewartsmith.io
  * @author Moar Technologies Corp / https://moar.io
  * @author Jeff Nusz / http://custom-logic.com
@@ -472,7 +472,7 @@ THREE.VRController.prototype.update = function(){
 		//  and use its output to predict where the this is.
 
 		this.armModel.setHeadPosition( this.head.position )
-		this.armModel.setHeadOrientation( this.head.quaternion )
+		//this.armModel.setHeadOrientation( this.head.quaternion )
 		this.armModel.setControllerOrientation(( new THREE.Quaternion() ).fromArray( pose.orientation ))
 		this.armModel.update()
 		this.matrix.compose(
@@ -1039,7 +1039,6 @@ THREE.VRController.supported = {
 		],
 		primary: 'trigger'
 	},
-
 	'Oculus Touch (Left)': {
 
 		style: 'oculus',
@@ -1054,47 +1053,6 @@ THREE.VRController.supported = {
 		],
 		primary: 'trigger'
 	},
-
-	'Oculus Go Controller': {
-
-
-		style: 'oculus',
-
-
-		//  THUMBPAD
-		//  Oculus Go’s thumbpad has axes values and is also a button.
-		//  The Y-axis is “Regular”.
-		//
-		//              Top: Y = -1
-		//                   ↑
-		//    Left: X = -1 ←─┼─→ Right: X = +1
-		//                   ↓
-		//           Bottom: Y = +1
-
-		axes: [{ name: 'thumbpad', indexes: [ 0, 1 ]}],
-		buttons: [
-
-
-			//  THUMBPAD
-			//  --------------------------------------------------------------
-			//  value:     Binary 0 or 1, duplicates isPressed.
-			//  isTouched: YES has real touch detection.
-			//  isPressed: As expected.
-
-			'thumbpad',
-
-
-			//  TRIGGER
-			//  --------------------------------------------------------------
-			//  value:     Binary 0 or 1, duplicates isPressed.
-			//  isTouched: Duplicates isPressed.
-			//  isPressed: As expected.
-
-			'trigger'
-		],
-		primary: 'trigger'
-	},
-
 
 
 
@@ -1289,7 +1247,7 @@ function OrientationArmModel(){
 
 Object.assign( OrientationArmModel, {
 
-	HEAD_ELBOW_OFFSET       : new THREE.Vector3(  0.155, -0.465, -0.15 ),
+	HEAD_ELBOW_OFFSET       : new THREE.Vector3(  0.155, -0.365, -0.15 ),//increase height
 	ELBOW_WRIST_OFFSET      : new THREE.Vector3(  0, 0, -0.25 ),
 	WRIST_CONTROLLER_OFFSET : new THREE.Vector3(  0, 0, 0.05 ),
 	ARM_EXTENSION_OFFSET    : new THREE.Vector3( -0.08, 0.14, 0.08 ),
